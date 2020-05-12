@@ -16,11 +16,7 @@ class BooksController < ApplicationController
 
   def create
     @book = current_user.books.new(book_params)
-    if @book.save  
-      render "show"  
-    else 
-      render "new"
-    end 
+    if @book.save then render "show" else render "new" end 
   end
   
   def edit
@@ -28,16 +24,20 @@ class BooksController < ApplicationController
   end
 
   def update
-    @book
-    if @book.update(book_params)
-        render 'show'
-    else
-        render 'edit'
+    if @book.user_id == current_user.id 
+    @book.update(book_params)  
+     render 'show' 
+    else 
+     render 'edit' 
     end   
   end
 
   def destroy
-    @book.destroy
+    if @book.user_id == current_user.id
+     @book.destroy
+    else
+     render 'show'
+    end
   end
 
   private
@@ -45,7 +45,7 @@ class BooksController < ApplicationController
   def set_book
     @book = Book.find(params[:id])
   end
-   
+
   def book_params
     params.require(:book).permit(:title, :description)
   end

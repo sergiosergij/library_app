@@ -7,6 +7,11 @@
 
 <h1>Library Of Life</h1>
 
+<%= form_tag books_path, :method => 'get' do %>
+	<%= text_field_tag :search, params[:search]%>
+	<%= submit_tag "Search" %>
+<% end %>
+
 <table>
 	<thread>
 		<tr>

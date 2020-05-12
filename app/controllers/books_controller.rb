@@ -3,7 +3,7 @@ class BooksController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @book = Book.all
+    @book = Book.where(["title LIKE ?","%#{params[:search]}%"])
   end
 
   def show
@@ -44,7 +44,7 @@ class BooksController < ApplicationController
   end
 
   def author
-    @book = Book.where(user_id: current_user.id)
+    @book = Book.where(user_id: current_user.id).where(["title LIKE ?","%#{params[:search]}%"])
   end
 
   private

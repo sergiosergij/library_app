@@ -5,7 +5,13 @@
     <%= link_to 'Ввійти', new_user_session_path %> або <%= link_to 'Зареєструватись', new_user_registration_path %>
 <% end %>
 
-<h1>Your Books</h1>
+<h1>Library Of Life</h1>
+<h2>Your Books</h2>
+
+<%= form_tag books_author_path, :method => 'get' do %>
+	<%= text_field_tag :search, params[:search]%>
+	<%= submit_tag "Search" %>
+<% end %>
 
 <table>
 	<thread>

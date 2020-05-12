@@ -1,4 +1,9 @@
 <h1> Book </h1>
+
+<% flash.each do |name, msg| %>
+  <strong><%= msg %></strong>
+<% end %>
+
 <p>
   <strong>Title:</strong>
   <%= @book.title %>

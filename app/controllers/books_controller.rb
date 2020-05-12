@@ -27,16 +27,19 @@ class BooksController < ApplicationController
     if @book.user_id == current_user.id 
     @book.update(book_params)  
      render 'show' 
-    else 
-     render 'edit' 
+    else
+     flash.now[:error] = "You are not the author of the book" 
+     render 'show' 
     end   
   end
 
   def destroy
     if @book.user_id == current_user.id
      @book.destroy
+     redirect_to books_url
     else
-     render 'show'
+      flash.now[:error] = "You are not the author of the book"
+      render  'show'
     end
   end
 

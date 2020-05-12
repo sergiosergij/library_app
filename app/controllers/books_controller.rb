@@ -43,6 +43,10 @@ class BooksController < ApplicationController
     end
   end
 
+  def author
+    @book = Book.where(user_id: current_user.id)
+  end
+
   private
     
   def set_book

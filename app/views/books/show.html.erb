@@ -14,5 +14,10 @@
   <%= @book.description %>
 </p>
 
-<%= link_to "Back", books_path %>
-<%= link_to "Edit", edit_book_path(@book) %>
+<%= link_to "All Books", books_path %>
+
+<%if @book.user_id == current_user.id %>
+<%= link_to 'Edit', edit_book_path(@book) %>
+<%= link_to 'Destroy', @book, method: :delete %>
+<%= link_to "Your Books", books_author_path %>
+<%end%>

@@ -1,11 +1,5 @@
-<% if user_signed_in? %>
-    <span>Привіт, <%= current_user.email %></span>
-    <%= link_to 'Вийти', destroy_user_session_path, :method => :delete %>
-<% else %>
-    <%= link_to 'Ввійти', new_user_session_path %> або <%= link_to 'Зареєструватись', new_user_registration_path %>
-<% end %>
 
-<h1>Library Of Life</h1>
+<h1>All Books</h1>
 
 <%= form_tag books_path, :method => 'get' do %>
 	<%= text_field_tag :search, params[:search]%>
@@ -35,5 +29,5 @@
 <br>
 
 <%if current_user.user_type == "author" %>
-<%= link_to 'Your books', books_author_path %>
+<span class ='btn btn-outline-primary'><%= link_to 'Your books', books_author_path %></span>
 <%end%>

@@ -4,12 +4,25 @@
     <title>LibraryApp</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <%= stylesheet_link_tag 'https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css'%>
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+  
   <body>
+  <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+  <h5 class="my-0 mr-md-auto font-weight-bold">Library Of Life</h5>
+  <nav class="my-2 my-md-0 mr-md-3">
+    <span class='p-2 text-dark'><%if user_signed_in? %>
+    <span>Привіт, <%= current_user.email %></span>
+    <%= link_to 'Вийти', destroy_user_session_path, :method => :delete %>
+    <% else %>
+    <%= link_to 'Ввійти', new_user_session_path %> або <%= link_to 'Зареєструватись', new_user_registration_path %>
+    <% end %></span>
+  </nav>
+</div>
+  <div class="container">
     <%= yield %>
+  </div>  
   </body>
 </html>

@@ -22,7 +22,7 @@
 			<td><%= book.description %></td>
 			<td><%= link_to 'Show', book %></td>
         	<td><%= link_to 'Edit', edit_book_path(book) %></td>
-        	<td><%= link_to 'Destroy', book, method: :delete %></td>
+        	<td><%= link_to 'Destroy', book, method: :delete, style: 'color:#e60000;' %></td>
 			</tr>
 		<% end %>
 	</tbody>

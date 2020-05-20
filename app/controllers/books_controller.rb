@@ -1,14 +1,12 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: [:show, :destroy, :update, :edit]
+  before_action :set_book, only: %i[show destroy update edit]
   before_action :authenticate_user!
 
   def index
-    @book = Book.where(["title LIKE ?","%#{params[:search]}%"])
+    @books = Book.where("title LIKE ?","%#{params[:search]}%")
   end
 
-  def show
-    @book 
-  end
+  def show; end
 
   def new
     @book = Book.new
@@ -19,12 +17,10 @@ class BooksController < ApplicationController
     if @book.save then render "show" else render "new" end 
   end
   
-  def edit
-    @book
-  end
+  def edit; end
 
   def update
-    if @book.user_id == current_user.id 
+    if current_user.books.find(params[:id]) #@book.user_id == current_user.id 
     @book.update(book_params)  
      render 'show' 
     else
@@ -34,7 +30,7 @@ class BooksController < ApplicationController
   end
 
   def destroy
-    if @book.user_id == current_user.id
+    if current_user.books.find(params[:id]) #@book.user_id == current_user.id
      @book.destroy
      redirect_to books_url
     else
@@ -44,7 +40,7 @@ class BooksController < ApplicationController
   end
 
   def author
-    @book = Book.where(user_id: current_user.id).where(["title LIKE ?","%#{params[:search]}%"])
+    @books = Book.where(user_id: current_user.id).where("title LIKE ?","%#{params[:search]}%")
   end
 
   private

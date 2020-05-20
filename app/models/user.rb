@@ -4,6 +4,6 @@ class User < ApplicationRecord
   	devise :database_authenticatable, :registerable,
     	   :recoverable, :rememberable, :validatable
 
-	enum user_type: [:reader, :author]
+	enum user_type: %i[reader author]
 	has_many :books
 end

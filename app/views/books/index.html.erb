@@ -28,5 +28,5 @@
 <br>
 
 <%if current_user.user_type == "author" %>
-	<span class ='btn btn-outline-primary'><%= link_to 'Your books', books_author_path %></span>
+	<span class ='btn btn-outline-primary'><%= link_to 'Your books', author_books_path %></span>
 <%end%>

@@ -1,7 +1,10 @@
 Rails.application.routes.draw do 
   root "books#index"
 
-  get "books/author"
   devise_for :users, controllers: { registrations: 'users/registrations' }
-  resources :books
+  resources :books do
+    collection do 
+     get "author"
+    end
+   end
 end

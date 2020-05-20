@@ -1,6 +1,6 @@
 <h1>Your Books</h1>
 
-<%= form_tag books_author_path, method: :get do %>
+<%= form_tag author_books_path, method: :get do %>
 	<%= text_field_tag :search, params[:search]%>
 	<%= submit_tag "Search" %>
 <% end %>

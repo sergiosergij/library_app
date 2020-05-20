@@ -17,7 +17,7 @@
 <%if @book.user_id == current_user.id %>
   <%= link_to 'Edit', edit_book_path(@book) %>
   <%= link_to 'Destroy', @book, method: :delete, style: 'color:#e60000;' %>
-  <span class ='btn btn-outline-primary'><%= link_to "Your Books", books_author_path %></span>
+  <span class ='btn btn-outline-primary'><%= link_to "Your Books", author_books_path %></span>
 <%end%>
 
 <span class ='btn btn-outline-primary'><%= link_to "All Books", books_path %></span>

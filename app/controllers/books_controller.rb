@@ -14,7 +14,7 @@ class BooksController < ApplicationController
 
   def create
     @book = current_user.books.new(book_params)
-    if @book.save then render "show" else render "new" end 
+    if @book.save then redirect_to (@book) else render "new" end 
   end
   
   def edit; end
@@ -40,7 +40,7 @@ class BooksController < ApplicationController
   end
 
   def author
-    @books = Book.where(user_id: current_user.id).where("title LIKE ?","%#{params[:search]}%")
+    @books = current_user.books.where("title LIKE ?","%#{params[:search]}%") #Book.where(user_id: current_user.id)
   end
 
   private

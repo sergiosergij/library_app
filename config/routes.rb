@@ -6,5 +6,5 @@ Rails.application.routes.draw do
     collection do 
      get "author"
     end
-   end
+  end
 end

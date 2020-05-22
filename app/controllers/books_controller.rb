@@ -20,7 +20,7 @@ class BooksController < ApplicationController
   def edit; end
 
   def update
-    if current_user.books.find(params[:id]) #@book.user_id == current_user.id 
+    if current_user.books.find(params[:id]) 
     @book.update(book_params)  
      render 'show' 
     else
@@ -30,7 +30,7 @@ class BooksController < ApplicationController
   end
 
   def destroy
-    if current_user.books.find(params[:id]) #@book.user_id == current_user.id
+    if current_user.books.find(params[:id])
      @book.destroy
      redirect_to books_url
     else

@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
 	enum user_type: %i[reader author]
 	has_many :books
+	has_many :comments
 end

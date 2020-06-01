@@ -1,0 +1,16 @@
+<h1>Edit</h1>
+<%= params.inspect%>
+
+<%= form_with scope: :comment, url: book_comment_path, method: :put, local: true do |form| %>
+  <%= @comment.errors.to_a %>
+  <p>
+    <%= form.label :comment %><br>
+    <%= form.text_field :comment %>
+  </p>
+
+  <p>
+    <%= form.submit "Edit" %>
+  </p>
+<% end %>
+
+<%= link_to 'Back', :back %>

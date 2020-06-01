@@ -15,4 +15,7 @@
   </p>
 <% end %>
 
-<%= link_to 'All Books', books_path %>
+<span class ='btn btn-outline-primary'><%= link_to 'All Books', books_path %></span>
+<%if current_user.user_type == "author" %>
+	<span class ='btn btn-outline-primary'><%= link_to 'Your books', author_books_path %></span>
+<%end%>

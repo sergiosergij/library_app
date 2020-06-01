@@ -1,0 +1,17 @@
+<h1>Comment New</h1>
+<h3>Params</h3>
+<%= params.inspect %>
+<h3>Error</h3>
+<%= @comment.errors.to_a %>
+<h1>----------------------------------------------------</h1>
+<%= form_with scope: :comment, url: book_comments_path, local: true do |form| %>
+  <p>
+    <%= form.label :comment %>
+    <%= form.text_area :comment %>
+  </p>
+  <p>
+    <%= form.submit({:class => 'btn btn-outline-primary'}) %>
+  </p>
+<% end %>
+
+<span class ='btn btn-outline-primary'><%= link_to 'All Books', books_path %></span>

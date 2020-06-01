@@ -1,0 +1,18 @@
+<h1>Comments</h1>
+<%= link_to "Back", :back %>
+<span class ='btn btn-outline-primary'><%= link_to "All Books", books_path %></span>
+
+<h1><% @comments.each do |com| %>
+  <tr>
+  <h4>Book</h4>
+  <h5><td><%= com.book.title %></td></h5>
+  <h4>Comment</h4>
+  <h5><td><%= com.comment %></td></h5>
+  <h6>User</h6>
+  <h6><td><%= com.user.email%></td></h6>
+  <td><%= link_to 'Show Comment', book_comment_path(com.book, com) %></td>
+  <h2>---------------------------</h2>
+  </tr>
+<% end %></h1>
+
+

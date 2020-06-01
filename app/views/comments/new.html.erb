@@ -4,7 +4,7 @@
 <h3>Error</h3>
 <%= @comment.errors.to_a %>
 <h1>----------------------------------------------------</h1>
-<%= form_with scope: :comment, url: book_comments_path, local: true do |form| %>
+<%= form_with scope: :Comment, url: book_comments_path, local: true do |form| %>
   <p>
     <%= form.label :comment %>
     <%= form.text_area :comment %>

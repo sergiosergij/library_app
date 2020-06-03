@@ -1,3 +1,12 @@
-Rails.application.routes.draw do
-  # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
+Rails.application.routes.draw do 
+  root "books#index"
+
+  devise_for :users, controllers: { registrations: 'users/registrations' }
+  resources :books do
+    collection do 
+     get "author"
+    end
+    resources :comments
+  end
+  
 end

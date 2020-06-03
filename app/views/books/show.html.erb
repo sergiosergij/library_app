@@ -1,0 +1,30 @@
+<h1> Book </h1>
+
+<%= link_to "Back", :back %>
+
+<%if @book.user_id == current_user.id %>
+  <%= link_to 'Edit', edit_book_path(@book) %>
+  <%= link_to 'Destroy', @book, method: :delete, style: 'color:#e60000;' %>
+  <span class ='btn btn-outline-primary'><%= link_to "Your Books", author_books_path %></span>
+<%end%>
+
+<% flash.each do |name, msg| %>
+  <strong><%= msg %></strong>
+<% end %>
+
+<p>
+  <strong>Title:</strong>
+  <%= @book.title %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @book.description %>
+</p>
+
+<span class ='btn btn-outline-primary'><%= link_to "All Books", books_path %></span>
+<span class ='btn btn-outline-primary'><%= link_to 'Comments', book_comments_path(@book) %></span>
+
+<% if current_user.user_type == "reader" %>
+<span class ='btn btn-outline-primary'><%= link_to 'Create Comment', new_book_comment_path(@book) %></span>
+<% end %>
